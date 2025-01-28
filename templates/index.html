@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Darker Background for the entire page */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #2c3e50, #34495e); /* Dark gradient background */
+    color: #ecf0f1; /* Light text color for better contrast */
+    line-height: 1.6;
+    height: 100vh;
+    padding: 0;
+}
+
+/* Header Styles */
+header {
+    background: rgba(0, 0, 0, 0.8); /* Dark background for the header */
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+    border-bottom: 5px solid #f39c12; /* Golden yellow border */
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 10px;
+    font-weight: 300;
+}
+
+/* Chatbot Styles */
+#chatbot {
+    position: fixed;
+    bottom: 20px; /* Place the chatbot at the bottom */
+    right: 20px; /* Align it to the right */
+    background-color: #2c3e50; /* Dark background for the chatbot */
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    width: 280px; /* Smaller width */
+    height: 350px; /* Smaller height */
+    z-index: 1000;
+    padding: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 1px solid #ddd;
+    animation: fadeIn 1s;
+    border-radius: 12px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.chatbox {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chatlog {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.chatbot-message, .user-message {
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.chatbot-message {
+    background-color: #d0e7f9; /* Soft blue background for chatbot messages */
+    color: #1d3557; /* Deep blue text */
+    align-self: flex-start;
+    font-size: 14px;
+}
+
+.user-message {
+    background-color: #4CAF50; /* Green background for user messages */
+    color: white;
+    align-self: flex-end;
+    font-size: 14px;
+}
+
+input[type="text"] {
+    padding: 12px;
+    border: 2px solid #B0BEC5;
+    border-radius: 10px;
+    font-size: 15px;
+    margin-bottom: 15px;
+    color: #333;
+    background-color: #f0f4f8;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #4CAF50; /* Green focus state */
+    outline: none;
+}
+
+button {
+    padding: 12px;
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Add a smooth transition to the chat messages */
+.chatbot-message, .user-message, input[type="text"], button {
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* Crop Information Form */
+#crop-info {
+    padding: 60px 0;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white overlay */
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 700px;
+}
+
+#crop-info input {
+    width: 300px;
+    padding: 12px;
+    margin: 10px;
+    font-size: 1.1em;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+#crop-info input:focus {
+    border-color: #ffeb3b; /* Highlight border on focus */
+}
+
+#crop-info button {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#crop-info button:hover {
+    background-color: #45a049;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    border-top: 5px solid #f39c12; /* Golden yellow border */
+}
+
+footer p {
+    font-size: 1em;
+    font-weight: 300;
+}
+
+/* Responsive Design for Mobile */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    #crop-info input, #crop-info button {
+        width: 80%;
+        margin: 10px 0;
+    }
+
+    #crop-details {
+        padding: 20px;
+    }
+}
+header .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Vertically center items */
+    justify-content: center;
+    text-align: center;
+}
+
+header img {
+    width: 160px;  /* Increase image width */
+    height: 160px; /* Increase image height */
+    object-fit: cover; /* Ensure it maintains aspect ratio */
+    border-radius: 10px;
+    margin-right: 60px; /* Add space between image and text */
+    float: left; /* Align image to the left */
+}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agriculture Assistant</title>
+    <!--<link rel="stylesheet" href="../static/example.css">-->
+</head>
+<body>
+
+    <!-- Header with AI Agriculture Image -->
+    <header>
+        <div class="container">
+            <img src="../static/images/image.webp" alt="AI Agriculture">
+            <h1>AI Agriculture Assistant</h1>
+            <p>Your one-stop solution for crop-related information</p>
+        </div>
+    </header>
+
+    <!-- Chatbot Section -->
+    <section id="chatbot">
+        <div class="container">
+            <div id="chatbox" class="chatbox">
+                <div id="chatlog" class="chatlog">
+                    <div class="chatbot-message">
+                        <p>Hi! How can I assist you with your farming today?</p>
+                    </div>
+                </div>
+                <input type="text" id="user-input" placeholder="Ask me anything..." />
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Crop Information Form -->
+    <section id="crop-info">
+        <div class="container">
+            <h2>Enter Crop Name</h2>
+            <input type="text" id="crop-name" placeholder="e.g., Rice, Wheat">
+            <button onclick="getCropInfo()">Get Crop Info</button>
+            <div id="crop-details"></div> <!-- To display fetched info -->
+        </div>
+    </section>
+    <!-- Information Display -->
+    <section id="crop-details">
+        <div class="container">
+            <div id="weather" class="card" onclick="fetchWeatherInfo()">
+                <h3>Weather Conditions</h3>
+                <p id="weather-info">Click to get weather alerts.</p>
+            </div>
+
+            <div id="dry-yard" class="card" onclick="fetchDryyardInfo()">
+                <h3>Dryyard Availability</h3> 
+                <p id="dryyard-info">Click to get dryyard availability data.</p>
+            </div>
+
+            <div id="organic-manure" class="card" onclick="window.location.href='man.html'">
+                <h3>Organic Manure Practices</h3>
+                <!--<p id="organic-manure-info">Click to get organic manure data.</p>-->
+                <a href="{{ url_for('man') }}">Click to get organic manure data.</a>
+            </div>
+
+            <div id="veterinary" class="card" onclick="window.location.href='vet.html'" >
+                <h3>Veterinary Consultancies</h3>
+                <!--<p id="veterinary-info">Click to get veterinary consultancy data.</p>-->
+                <a href="{{ url_for('vet') }}">Click to get veterinary consultancy data.</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AI Agriculture Assistant. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script >function getCropInfo() {
+        let cropName = document.getElementById("crop-name").value.trim();
+    
+        if (cropName === "") {
+            alert("Please enter a crop name.");
+            return;
+        }
+        const cropData = {
+    "wheat": {"name": "Wheat", "season": "Winter", "soil": "Loamy Soil", "water": "Moderate", "pests": "Rust, Aphids"},
+    "rice": {"name": "Rice", "season": "Monsoon", "soil": "Clayey Soil", "water": "High", "pests": "Stem Borer, Leaf Folder"},
+    "maize": {"name": "Maize", "season": "Summer", "soil": "Well-drained", "water": "Low", "pests": "Armyworms, Rootworm"},
+}
+const crop = cropData[cropName];
+
+if (crop) {
+    document.getElementById("crop-details").innerHTML = `
+        <h3>${crop.name}</h3>
+        <p>Best Season: ${crop.season}</p>
+        <p>Soil Type: ${crop.soil}</p>
+        <p>Water Requirement: ${crop.water}</p>
+        <p>Pests & Diseases: ${crop.pests}</p>
+    `;
+} else {
+    document.getElementById("crop-details").innerHTML = `<p>Sorry, information for ${cropName} is not available.</p>`;
+}
+    }</script>
+</body>
+</html>
